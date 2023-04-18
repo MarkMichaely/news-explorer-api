@@ -1,0 +1,37 @@
+{
+  "name": "news-explorer-api",
+  "version": "1.0.0",
+  "description": "repository for practicum final project API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint .",
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkMichaely/news-explorer-api.git"
+  },
+  "keywords": [
+    "API",
+    "final-project-api"
+  ],
+  "author": "Mark Michaely",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkMichaely/news-explorer-api/issues"
+  },
+  "homepage": "https://github.com/MarkMichaely/news-explorer-api#readme",
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "mongoose": "^7.0.4",
+    "validator": "^13.9.0"
+  }
+}
