@@ -3,8 +3,10 @@ const { getArticles, createArticle, deleteArticle } = require('../controllers/ar
 
 const articlesRouter = express.Router();
 
-articlesRouter.get('/articles', getArticles);
+articlesRouter.get('/', getArticles);
 
-articlesRouter.post('/articles', createArticle);
+articlesRouter.post('/', createArticle);
 
-articlesRouter.delete('/articles/_id', deleteArticle);
+articlesRouter.delete('/:_id', deleteArticle);
+
+module.exports = articlesRouter;
