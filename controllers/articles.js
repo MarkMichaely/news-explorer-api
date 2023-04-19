@@ -23,10 +23,11 @@ const createArticle = (req, res, next) => {
 
 const deleteArticle = (req, res, next) => {
   const { _id } = req.params;
-  Article.findById(_id)
+  Article.findById(_id).select("+owner")
     .orFail(() => new NotFoundError('No article found'))
     .then((article) => {
-      if (!article.owner.equals(req.user._id)) { //if doesn't work try req.user as owner is objectId and req.user should be the same
+      console.log(article);
+      if (!article.owner.equals(req.user._id)) {
         return next(new ForbiddenError('Unathorized Access'));
       }
       return article.deleteOne()
