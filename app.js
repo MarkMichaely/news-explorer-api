@@ -15,7 +15,7 @@ const limiter = require('./middleware/rateLimiter');
 
 const app = express();
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 app.use(helmet());
 app.use(limiter);
