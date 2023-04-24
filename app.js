@@ -18,7 +18,6 @@ const app = express();
 const { PORT = 3001 } = process.env;
 
 app.use(helmet());
-app.use(limiter);
 const jsonParser = bodyParser.json();
 
 mongoose.connect(DATA_BASE_ADDRESS);
@@ -27,10 +26,8 @@ app.use(cors());
 app.options('*', cors());
 app.use(jsonParser);
 app.use(requestLogger);
+app.use(limiter);
 app.use(appRouter);
-app.use('*', () => {
-  throw new NotFoundError(notFoundResponse);
-});
 
 app.use(errorLogger);
 app.use(errors());

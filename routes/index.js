@@ -15,4 +15,9 @@ appRouter.use(auth);
 appRouter.use('/users', usersRouter);
 appRouter.use('/articles', articlesRouter);
 
+app.use('*', () => {
+  throw new NotFoundError(notFoundResponse);
+});
+
+
 module.exports = appRouter;
