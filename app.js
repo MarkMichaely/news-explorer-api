@@ -9,23 +9,27 @@ const appRouter = require('./routes');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 const errorHandler = require('./middleware/errorHandler');
+const { DATA_BASE_ADDRESS } = require('./utils/config');
+const { notFoundResponse } = require('./utils/responses');
+const limiter = require('./middleware/rateLimiter');
 
 const app = express();
 
 const { PORT = 3000 } = process.env;
 
 app.use(helmet());
+app.use(limiter);
 const jsonParser = bodyParser.json();
 
-mongoose.connect('mongodb://localhost:27017/finalproject');
+mongoose.connect(DATA_BASE_ADDRESS);
 
 app.use(cors());
 app.options('*', cors());
 app.use(jsonParser);
-app.use(requestLogger)
+app.use(requestLogger);
 app.use(appRouter);
 app.use('*', () => {
-  throw new NotFoundError('Requested resource not found');
+  throw new NotFoundError(notFoundResponse);
 });
 
 app.use(errorLogger);

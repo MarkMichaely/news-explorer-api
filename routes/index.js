@@ -2,6 +2,7 @@ const express = require('express');
 const { login, createUser } = require('../controllers/users');
 const auth = require('../middleware/auth');
 const { validateLogin, validateSignup } = require('../middleware/validation');
+
 const appRouter = express.Router();
 const articlesRouter = require('./articles');
 const usersRouter = require('./users');
